@@ -1,9 +1,10 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
   return (
     <>
-       <h1>London Property Map</h1>
+       <Outlet />
     </>
   )
 }
