@@ -1,9 +1,12 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import ResponsiveNavbar from './components/ResponsiveNavbar/ResponsiveNavbar'
 
 function App() {
   return (
     <>
-       <h1>London Property Map</h1>
+      <ResponsiveNavbar />
+      <Outlet />
     </>
   )
 }
