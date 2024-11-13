@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
+import ResponsiveNavbar from './components/ResponsiveNavbar'
 
 function App() {
   return (
     <>
-       <Outlet />
+      <ResponsiveNavbar />
+      <Outlet />
     </>
   )
 }

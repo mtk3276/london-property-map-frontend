@@ -1,0 +1,122 @@
+.header {
+    position: fixed;
+    width: 100%;
+    max-width: 100vw;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 3rem;
+    background-color: var(--body-color);
+    z-index: var(--z-fixed);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: var(--header-height);
+}
+
+.nav-web {
+    height: var(--header-height);
+}
+
+.nav-mobile {
+    height: var(--header-height-mobile);
+    padding-top: 2rem;
+}
+
+.nav__logo__hidden {
+    display: none;
+}
+
+.nav__logo {
+    color: var(--text-color);
+    font-size: var(--logo-font-size);
+    font-weight: var(--font-black);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    height: 100%;
+    transition: color 0.4s;
+}
+
+.nav__logo :hover {
+    border-bottom: 10px;
+}
+
+.nav__logo span {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.nav__toggle,
+.nav__close {
+    font-size: var(--nav-font-size);
+    font-weight: var(--font-black);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.nav__toggle {
+    font-weight: var(--font-black);
+}
+
+.nav__close {
+    font-weight: var(--font-regular);
+    margin-top: 40px;
+}
+  
+.nav__menu {
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: -100%; /* Menu initially off-screen to the left */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--menu-background-color); 
+    transition: left 0.5s ease; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensures menu appears on top */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.show-menu {
+    left: 0;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+}
+
+.hover-underline-animation.left::after {
+    transform-origin: bottom right;
+}
+
+.hover-underline-animation.left:hover::after {
+    transform-origin: bottom left;
+}
