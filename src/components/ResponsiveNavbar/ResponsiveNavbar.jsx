@@ -4,7 +4,7 @@ import NavLinks from "../NavLinks/NavLinks";
 import "./ResponsiveNavbar.css";
 
 export default function ResponsiveNavbar() {
-    const { isMenuOpen, isMobile, toggleMenu, closeMobileMenu } = useNavbarState();
+    const { isMenuOpen, isMobile, isTablet, toggleMenu, closeMobileMenu } = useNavbarState();
 
     return (
         <header className="header">
@@ -25,7 +25,7 @@ export default function ResponsiveNavbar() {
                 ) : (
                     <NavLinks isMobile={isMobile} closeMobileMenu={closeMobileMenu}/>
                 )}
-                <NavLink to="/" className={isMobile ? "nav__logo__hidden" : "nav__logo"}>
+                <NavLink to="/" className={(isTablet || isMobile) ? "nav__logo__hidden" : "nav__logo"}>
                     <span>London Residential</span>
                     <span>Property Price Map</span>
                 </NavLink>
