@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useNavbarState } from "../hooks/useNavbarState";
-import NavLinks from "./NavLinks";
+import { useNavbarState } from "../../hooks/useNavbarState";
+import NavLinks from "../NavLinks/NavLinks";
 import "./ResponsiveNavbar.css";
 
 export default function ResponsiveNavbar() {

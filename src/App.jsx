@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
-import ResponsiveNavbar from './components/ResponsiveNavbar'
+import ResponsiveNavbar from './components/ResponsiveNavbar/ResponsiveNavbar'
 
 function App() {
   return (
