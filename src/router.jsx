@@ -2,6 +2,7 @@ import App from "./App";
 import { loader } from "./loaders/LondonLoader";
 import HomePage from "./routes/HomeRoute";
 import MapPage from "./routes/MapRoute";
+import App2 from "./App2";
 
 const routes = [
     {
@@ -17,7 +18,11 @@ const routes = [
                 element: <MapPage />,
                 loader: loader,
             },
-        ]
+        ],
+    },
+    {
+        path: "/app2",
+        element: <App2 />,
     }
 ];
 

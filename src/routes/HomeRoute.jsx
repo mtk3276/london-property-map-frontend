@@ -1,33 +1,28 @@
-import { useMediaQuery } from "react-responsive";
-import "./HomeRoute.css";
+import { ParallaxProvider } from 'react-scroll-parallax'
+import ParallaxImages from '../components/ParallaxImages/ParallaxImages'
+import ParallaxPage from '../components/ParallaxPage/ParallaxPage'
+import ParallaxHeading from '../components/HomeContent/ParallaxHeading/ParallaxHeading'
+import { MapButton, ParallaxDataDescription, ParallaxMainDescription, ParallaxSubDescription } from '../components/HomeContent/HomeContent'
+import './HomeRoute.css'
+import '../App.css'
 
 export default function HomePage() {
-    const isDesktop = useMediaQuery({ minWidth: 1024 });
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-
-    return (
-        <>
-            <div className="home">
-                {/* <div className="home__heading"> */}
-                <div className={`
-                    ${isDesktop ? "home__heading__web" : ""} 
-                    ${isTablet ? "home__heading__tablet" : ""}
-                    ${isMobile ? "home__heading__mobile" : ""}
-                    `}>
-                    <span>2023</span>
-                    <span>London</span>
-                    <span>Residential</span>
-                    <span>Property</span>
-                    <span>Prices</span>
-                </div>
-                <span className={`
-                    ${isDesktop ? "sub__text__web" : ""} 
-                    ${isTablet ? "sub__text__tablet" : ""}
-                    ${isMobile ? "sub__text__mobile" : ""}
-                    `}>
-                        Head to my map to see price paid data for 2023.</span>
-            </div>
-        </>
-    )
+  return (
+    <ParallaxProvider>
+      <div className="main__container">
+        <div className="parallax__images__container">
+          <ParallaxImages />
+        </div>
+        <div className="parallax__pages">
+          <ParallaxHeading />
+          <div className="main__content__container">
+            <ParallaxMainDescription />
+            <ParallaxSubDescription />
+            <ParallaxDataDescription />
+            <MapButton />
+          </div>
+        </div>
+      </div>
+    </ParallaxProvider>
+  )
 }

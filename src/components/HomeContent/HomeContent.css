@@ -1,0 +1,109 @@
+.big__number {
+    font-family: bodoni-moda;
+    font-size: var(--home-big-number-font-size);
+    letter-spacing: 0em;
+    padding-bottom: 10%;
+}
+
+.home__text__body {
+    display: flex;
+    flex-direction: column;
+    line-height: var(--home-main-line-height);
+    font-size: var(--home-main-font-size);
+    letter-spacing: var(--home-main-letter-spacing);
+}
+
+.cobalt__text {
+    color: var(--cobalt);
+}
+
+.emphasised__text {
+    text-transform: lowercase;
+    font-size: var(--home-emphasised-font-size);
+}
+
+span.emphasised__text {
+    line-height: 0.85;
+}
+
+.emphasised__mt {
+    margin-top: 5%;
+}
+
+.emphasised__mb {
+    margin-bottom: 5%;
+}
+
+.map__btn__container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    font-size: var(--home-main-font-size);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map__btn {
+    width: 100%;
+    font-family: "Allerta";
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--cobalt);
+    color: white;
+    overflow: hidden;
+    margin-bottom: 15vh;
+}
+
+.map__btn .btn__line {
+position: relative;
+    z-index: 1;
+    display: block; /* Ensure spans stack vertically */
+    color: white;
+    line-height: 0.9;
+    transition: color 0.4s ease;
+    height: inherit;
+    box-sizing: border-box;
+  }
+
+.map__btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: black;
+    z-index: 0;
+    transition: left 0.4s ease;
+}
+
+.map__btn:hover::before {
+    left: 0;
+}
+
+.map__btn .btn__line::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    z-index: 2;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.4s ease;
+}
+
+.map__btn:hover .btn__line::after {
+    clip-path: inset(0 0 0 0);
+}
+
+/* Use vw for landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .map__btn__container {
+            justify-content: end;
+        }
+}

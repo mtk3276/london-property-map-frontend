@@ -1,0 +1,144 @@
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    column-gap: 4rem;
+    list-style-type: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav__list__web {
+    display: flex;
+    flex-direction: row;
+    column-gap: 4rem;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Sweep animation */
+.nav__link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color); /* Default text color */
+    overflow: hidden;
+    background-color: var(--body-color);
+}
+  
+.nav__link span {
+    position: relative;
+    z-index: 1;
+    color: var(--text-color); /* Default text */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.nav__link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start the sweep from left */
+    width: 100%;
+    height: 100%;
+    background-color: var(--cobalt);
+    z-index: 0;
+    transition: left 0.4s ease; /* Control the sweeping animation */
+}
+  
+.nav__link:hover::before {
+    left: 0; /* Move the black background into view */
+}
+  
+.nav__link::after {
+    content: attr(data-text); /* Duplicate text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--body-color); /* White version of the text */
+    z-index: 2; /* Place above the black background */
+    clip-path: inset(0 100% 0 0); /* Initially hidden */
+    transition: clip-path 0.4s ease; /* Reveal when hovered */
+}
+  
+.nav__link:hover::after {
+    clip-path: inset(0 0 0 0); /* Fully reveal the white text */
+}
+  
+.nav__link.active {
+    color: var(--body-color);
+}
+
+.nav__link.active::before {
+    left: 0;
+}
+
+.nav__link.active::after {
+    clip-path: inset(0 0 0 0);
+}
+
+
+/* Sweep animation mobile */
+.nav__link__mobile {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color); /* Default text color */
+    overflow: hidden;
+    background-color: none;
+}
+  
+.nav__link__mobile span {
+    position: relative;
+    z-index: 1;
+    color: var(--text-color); /* Default text */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.nav__link__mobile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start the sweep from left */
+    width: 100%;
+    height: 100%;
+    background-color: var(--cobalt);
+    z-index: 0;
+    transition: left 0.4s ease; /* Control the sweeping animation */
+}
+  
+.nav__link__mobile:hover::before {
+    left: 0; /* Move the black background into view */
+}
+  
+.nav__link__mobile::after {
+    content: attr(data-text); /* Duplicate text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--body-color); /* White version of the text */
+    z-index: 2; /* Place above the black background */
+    clip-path: inset(0 100% 0 0); /* Initially hidden */
+    transition: clip-path 0.4s ease; /* Reveal when hovered */
+}
+  
+.nav__link__mobile:hover::after {
+    clip-path: inset(0 0 0 0); /* Fully reveal the white text */
+}
+  
+.nav__link__mobile.active {
+    color: var(--body-color);
+}
+
+.nav__link__mobile.active::before {
+    left: 0;
+}
+
+.nav__link__mobile.active::after {
+    clip-path: inset(0 0 0 0);
+}

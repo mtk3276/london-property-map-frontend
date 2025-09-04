@@ -1,77 +1,57 @@
 :root {
-  font-family: "Bodoni Moda", serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "opsz" 9;
-  text-transform: uppercase;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
+  font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #D3C7C7;
+  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --body-color: white;
   --text-color: black;
-  --h1-font-size: 96px;
-  --web-h1-font-size: 96px;
-  --tablet-h1-font-size: 72px;
-  --mobile-h1-font-size: 48px;
-  --nav-font-size: 2.25rem;
-  --logo-font-size: 2.25rem;
-  --font-regular: 400;
-  --font-extra-bold: 800;
-  --font-black: 900;
-  --header-height: 15vh;
-}
-
-a {
-  text-decoration: inherit;
+  --cobalt: #2755d7;
+  --menu-bg-color: #ffffff90;
+  --font-family-primary: Allerta;
+  --font-family-secondary: Bodoni-Moda;
+  --home-main-font-size: 6.1vmin;
+  --home-big-number-font-size: 11vmin;
+  --home-emphasised-font-size: 8.5vmin;
+  --home-main-line-height: 0.8;
+  --home-main-letter-spacing: -0.07em;
+  --x-padding-mobile: 5vw;
+  --x-padding: 2.5vw;
+  --y-padding: 1vw;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  width: 100vw;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html, body {
+  overscroll-behavior: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+@media (max-width: 1024px) and (orientation: portrait) {
+    :root {
+      --home-main-font-size: 10vw;
+      --home-emphasised-font-size: 11.5vw;
+      --home-big-number-font-size: 12vw;
+    }
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* @media (max-width: 1024px) and (orientation: portrait) {
+    :root {
+      --home-main-font-size: 8vw;
+      --home-emphasised-font-size: 8.5vw;
+      --home-big-number-font-size: 9vw;
+    }
+} */
