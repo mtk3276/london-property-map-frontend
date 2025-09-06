@@ -65,18 +65,18 @@ export default function MapComponent({
     };
 
     // For map chloropleth (local auths and wards only)
-    // Updated color scale: deep blues and purples
+    // Updated color scale: high contrast blues, purples and pinks
     const colorScale = [
-        "#172fa9", // deep blue
-        "#2755d7", // cobalt (matches --cobalt)
-        "#3a3fc1",
-        "#4b2fa6",
-        "#6a1ca3",
-        "#8a1fa7",
-        "#a12fa9",
-        "#b84fcf",
-        "#c77fd7",
-        "#e0b3f7"  // light purple
+        "#1a2a85", // brightened deep blue (darkest)
+        "#2755d7", // cobalt (matches --cobalt) - keeping as requested
+        "#4a1a8a", // deep purple
+        "#6b1b99", // medium purple
+        "#8b2da6", // brighter purple
+        "#a5359c", // stronger magenta purple
+        "#c44fb0", // bold magenta
+        "#e06cc4", // bright pink-magenta
+        "#f094d8", // light pink
+        "#fcd4f7"  // very light pink (lightest)
     ];    
     const colorScale2 = [
         '#800026',
@@ -152,19 +152,47 @@ export default function MapComponent({
 
     // Legend component
     function MapLegend() {
-        // Determine which bins to use based on zoom level
-        let currentBins = null;
-        if (zoomLevel > 12 && wardBins) {
-            currentBins = wardBins;
-        } else if (zoomLevel > 9 && zoomLevel <= 12 && ladBins) {
-            currentBins = ladBins;
+        // Determine which geojson data to use based on zoom level
+        let currentGeojsonData = null;
+        if (zoomLevel > 11 && wardsGeojson) {
+            currentGeojsonData = wardsGeojson;
+        } else if (zoomLevel > 9 && zoomLevel <= 11 && ladsGeojson) {
+            currentGeojsonData = ladsGeojson;
         }
 
-        // Don't render legend if no bins available
-        if (!currentBins || currentBins.length === 0) return null;
+        // Don't render legend if no data available
+        if (!currentGeojsonData || !currentGeojsonData.features) return null;
 
-        // Sort bins by price_bin to ensure correct order
-        const sortedBins = [...currentBins].sort((a, b) => a.price_bin - b.price_bin);
+        // Calculate actual bin ranges from the geojson data
+        const binRanges = {};
+        
+        currentGeojsonData.features.forEach(feature => {
+            const bin = feature.properties.bin;
+            const priceStr = feature.properties.price_paid;
+            
+            // Convert price string back to number (remove £ and commas)
+            const price = parseFloat(priceStr.replace(/[£,]/g, ''));
+            
+            if (!isNaN(price) && bin) {
+                if (!binRanges[bin]) {
+                    binRanges[bin] = { min: price, max: price };
+                } else {
+                    binRanges[bin].min = Math.min(binRanges[bin].min, price);
+                    binRanges[bin].max = Math.max(binRanges[bin].max, price);
+                }
+            }
+        });
+
+        // Convert to array and sort by bin number
+        const actualBins = Object.entries(binRanges)
+            .map(([binNum, range]) => ({
+                price_bin: parseInt(binNum),
+                bin_min: range.min,
+                bin_max: range.max
+            }))
+            .sort((a, b) => a.price_bin - b.price_bin);
+
+        if (actualBins.length === 0) return null;
 
         return (
             <div style={{
@@ -182,13 +210,14 @@ export default function MapComponent({
                 border: '1px solid #e0e0e0',
             }}>
                 <div style={{fontWeight: 700, marginBottom: 8, color: '#2755d7'}}>Average Price Paid</div>
-                {sortedBins.map((bin, i) => (
+                {actualBins.map((bin, i) => (
                     <div key={bin.price_bin} style={{display: 'flex', alignItems: 'center', marginBottom: 2}}>
                         <span style={{
                             display: 'inline-block',
                             width: 24,
                             height: 16,
                             background: colorScale[bin.price_bin - 1] || '#cccccc',
+                            opacity: 0.8,
                             borderRadius: 4,
                             marginRight: 10,
                             border: '1px solid #b8b8b8',
@@ -225,7 +254,7 @@ export default function MapComponent({
                         layer.bindPopup(`<strong>${name}</strong>`);
                 }} />
                 )}
-                {zoomLevel>12 && wardsGeojson && (
+                {zoomLevel>11 && wardsGeojson && (
                     <>
                     <GeoJSON
                         data={ladsGeojson}
@@ -250,7 +279,7 @@ export default function MapComponent({
                     />
                     </>
                 )}
-                {zoomLevel>9 &&  zoomLevel<13 && ladsGeojson && (
+                {zoomLevel>9 &&  zoomLevel<12 && ladsGeojson && (
                     <GeoJSON 
                         data={ladsGeojson}
                         style={(feature) => ({
