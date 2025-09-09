@@ -39,6 +39,11 @@ body {
 
 html, body {
   overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 1024px) and (orientation: portrait) {

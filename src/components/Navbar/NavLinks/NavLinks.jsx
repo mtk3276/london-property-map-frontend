@@ -18,6 +18,11 @@ const NavLinks = ({ isMobile, closeMobileMenu }) => {
           <span>Map | 2023</span>
         </NavLink>
       </li>
+      <li className="nav__item">
+        <NavLink to="/about" className={({isActive}) => `${isMobile ? "nav__link__mobile" : "nav__link"} ${isActive ? "active" : ""}`} onClick={closeMobileMenu} data-text="About">
+          <span>About</span>
+        </NavLink>
+      </li>
     </ul>
   );
 };

@@ -5,6 +5,9 @@
   background-color: var(--body-color);
   font-family: var(--font-family-primary);
   text-transform: uppercase;
+  min-height: 100vh;
+  max-height: 600vh;
+  overflow-x: hidden;
 }
 
 .allerta-text-large {
@@ -22,6 +25,7 @@
 .main__container {
   width: 100%;
   height: 600vh;
+  max-height: 600vh;
   box-sizing: border-box;
   padding: 0 var(--x-padding);
   margin: 0;
@@ -29,6 +33,7 @@
   align-items: stretch;
   position: relative;
   background-color: white;
+  overflow: hidden;
 }
 
 .parallax__images__container {

@@ -279,7 +279,7 @@ export default function MapComponent({
                     />
                     </>
                 )}
-                {zoomLevel>9 &&  zoomLevel<12 && ladsGeojson && (
+                {zoomLevel>=10 && zoomLevel<=11 && ladsGeojson && (
                     <GeoJSON 
                         data={ladsGeojson}
                         style={(feature) => ({
