@@ -1,0 +1,33 @@
+.parallax__images {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parallax__container {
+    width: 65vh;
+    aspect-ratio: 1 / 1;
+    height: auto; /* Set box size */
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Neutral placeholder color */  
+    overflow: hidden; /* Ensure content stays inside the box */
+}
+
+.parallax__image {
+/* Slightly larger than the box to create dynamic movement */
+    width: 125%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Scale image to cover the box */
+}
+
+@media (max-width: 1024px) {
+    .parallax__container {
+        width: 100%;
+    }
+}

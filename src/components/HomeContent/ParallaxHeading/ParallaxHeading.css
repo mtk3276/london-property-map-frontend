@@ -1,0 +1,39 @@
+.heading__container {
+    position: absolute;
+    left: 35vw;
+    width: auto;
+}
+
+.parallax__heading {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-secondary);
+    font-size: 8vw;
+    line-height: 0.75;
+}
+
+@media (max-width: 1024px) and (orientation: portrait) {
+    .heading__container {
+        position: absolute;
+        left: 0;
+        width: auto;
+    }
+
+    .parallax__heading {
+        font-size: 12vw;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    /* Use vw for landscape */
+    .heading__container {
+        /* top: -10vw; */
+        top: -10vw;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 767px) {
+    .heading__container {
+        top: -25vw;
+    }
+}

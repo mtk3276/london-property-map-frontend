@@ -1,0 +1,16 @@
+.map__container {
+    height: 100vh;
+    margin: 0;
+    margin-top: var(--header-height);
+    display: flex;
+    box-sizing: border-box;
+    text-align: left;
+    color: var(--text-color);
+    background: #ffffff95;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 2vw;
+    /* Remove thick border */
+}
