@@ -1,5 +1,6 @@
 import MapComponent from "../components/MapComponent/MapComponent";
 import MapLoading from "../components/MapLoading/MapLoading";
+import MapError from "../components/MapError/MapError";
 import "./MapRoute.css";
 import { useEffect, useState } from "react";
 import { tranformGeojsonForLeaflet } from "../utils/geojsonDataTransform";
@@ -185,31 +186,15 @@ export default function MapPage() {
     if (error) {
         return (
             <div className="map__container">
-                <div style={{ 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    height: '100vh',
-                    flexDirection: 'column',
-                    fontFamily: 'Allerta'
-                }}>
-                    <h2 style={{ color: '#e31a1c' }}>Error Loading Map Data</h2>
-                    <p style={{ color: '#666' }}>{error}</p>
-                    <button 
-                        onClick={() => window.location.reload()} 
-                        style={{
-                            padding: '12px 24px',
-                            backgroundColor: '#2755d7',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            marginTop: '16px'
-                        }}
-                    >
-                        Retry
-                    </button>
-                </div>
+                <MapError 
+                    error={error} 
+                    onRetry={() => {
+                        setError(null);
+                        setIsLoading(true);
+                        // Trigger a re-fetch by updating a dependency
+                        window.location.reload();
+                    }} 
+                />
             </div>
         );
     }
