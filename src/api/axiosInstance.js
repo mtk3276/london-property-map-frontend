@@ -6,7 +6,7 @@ const config = {
 
 const axiosInstance = axios.create({
     baseURL: config.apiUrl,
-    timeout: 10000,
+    timeout: 60000,
 });
 
 export default axiosInstance;
